@@ -7,7 +7,8 @@ import { Deputado, Index, IndexDeputadoQueryParam } from '../types'
 import axios from 'axios'
 import DeputadoCard from './DeputadoCard'
 import Grid from '@mui/material/Unstable_Grid2';
-import { CircularProgress, Pagination } from '@mui/material'
+import { Pagination } from '@mui/material'
+import DeputadoCardSkeleton from './DeputadoCardSkeleton'
 
 function ListDeputados() {
   const [queryParams, setQueryParam] = useState<IndexDeputadoQueryParam[]>([
@@ -84,7 +85,9 @@ function ListDeputados() {
         </Grid>
         <Grid xs={12}>
           <Grid container spacing={2} display="flex" justifyContent="center" alignItems="center">
-            {isLoading && <CircularProgress />}
+            {isLoading && (
+              [...Array(6)].map((e) => <Grid key={e}><DeputadoCardSkeleton /></Grid>)
+            )}
             {!isLoading && deputados.length === 0 && <p>Nenhum deputado encontrado</p>}
             {deputados.map((deputado) => (
               <Grid key={deputado.id}>
