@@ -8,7 +8,7 @@ import { DeputadoProp } from '../types';
 export default function DeputadoCard(deputado: DeputadoProp) {
   return (
     <Card sx={{ maxWidth: 500, width: '100%' }}>
-      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
         <Box sx={{ width: 150, margin: 'auto' }}>
           <CardMedia
             component="img"
